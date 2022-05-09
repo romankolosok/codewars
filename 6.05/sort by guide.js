@@ -1,16 +1,9 @@
 //Simple Fun #217: Sort By Guide
 function sortByGuide(arr, guide) {
-    let res = [];
-    for(let i = 0; i < arr.length; i++){
-      if(guide[i] === -1) res[i] = arr[i];
-      else res[i] = undefined;
-    }
+    let res = new Array(arr.length);
     let counter = 1;
-    for(let i = 0; i < arr.length; i++){
-      if(res[i] === undefined){
-        res[i] = arr[guide.indexOf(counter)];
-        counter++
-      }
-    }
+    res.fill(undefined);
+    res = res.map((x,i) => guide[i] === -1?arr[i]:x);
+    res = res.map((x,i) => x === undefined?arr[guide.indexOf(counter++)]:x);
     return res;
   }
