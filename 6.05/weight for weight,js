@@ -1,0 +1,20 @@
+//Weight for weight
+function orderWeight(str) {
+    str = str.trim();
+    let res = [];
+    str = str.split(/\s+/g);
+    str.sort((a,b)=>sumOfDigits(parseInt(a))-sumOfDigits(parseInt(b)));
+    let i = 0, arr = [];
+    while(i < str.length){
+      arr = [];
+      do{
+        arr.push(str[i]);
+        i++;
+      }while(sumOfDigits(parseInt(str[i])) === sumOfDigits(parseInt(arr[0])));
+      res = res.concat(arr.sort());
+      console.log(res);
+    }
+    return res.join(" ")
+  }
+  
+  const sumOfDigits = x => [...(x+"")].reduce((acc,cur)=>acc+ +cur,0)
